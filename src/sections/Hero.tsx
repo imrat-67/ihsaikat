@@ -2,6 +2,7 @@
 import React, { useEffect, useRef } from 'react';
 import SectionContainer from '@/components/SectionContainer';
 import { ChevronDown } from 'lucide-react';
+import { downloadCV } from '@/lib/utils';
 
 const Hero = () => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -54,9 +55,8 @@ const Hero = () => {
         </p>
         <div className="opacity-0 animate-fade-in" style={{ animationDelay: '1500ms', animationFillMode: 'forwards' }}>
           <a 
-            href="/cv.pdf" 
-            target="_blank" 
-            rel="noopener noreferrer" 
+            href="#" 
+            onClick={downloadCV}
             className="btn-primary text-lg px-8 py-4"
           >
             Download CV

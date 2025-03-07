@@ -1,6 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
+import { downloadCV } from '@/lib/utils';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -46,9 +47,8 @@ const Navbar = () => {
             </button>
           ))}
           <a 
-            href="/cv.pdf" 
-            target="_blank" 
-            rel="noopener noreferrer" 
+            href="#" 
+            onClick={downloadCV}
             className="btn-primary ml-4"
           >
             Resume
@@ -77,9 +77,8 @@ const Navbar = () => {
             </button>
           ))}
           <a 
-            href="/cv.pdf" 
-            target="_blank" 
-            rel="noopener noreferrer"
+            href="#" 
+            onClick={downloadCV}
             className="btn-primary mt-8 text-center"
           >
             Resume

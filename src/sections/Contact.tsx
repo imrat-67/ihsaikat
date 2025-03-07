@@ -5,6 +5,7 @@ import SocialIcon from '@/components/SocialIcon';
 import { Mail, Phone, Linkedin, Github, Send } from 'lucide-react';
 import { useInView } from 'react-intersection-observer';
 import { useToast } from "@/hooks/use-toast";
+import { downloadCV } from '@/lib/utils';
 
 const Contact = () => {
   const { ref, inView } = useInView({
@@ -29,16 +30,40 @@ const Contact = () => {
     e.preventDefault();
     setIsSubmitting(true);
     
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    
-    // Reset form and show success message
-    setFormData({ name: '', email: '', message: '' });
-    setIsSubmitting(false);
-    toast({
-      title: "Message sent",
-      description: "Thank you for your message. I'll get back to you soon!",
-    });
+    try {
+      // Use a service like EmailJS, Formspree, or a custom backend endpoint
+      const response = await fetch('https://formspree.io/f/mleqwjzb', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          message: formData.message
+        })
+      });
+      
+      if (response.ok) {
+        // Reset form and show success message
+        setFormData({ name: '', email: '', message: '' });
+        toast({
+          title: "Message sent successfully",
+          description: "Thank you for your message. I'll get back to you soon!",
+        });
+      } else {
+        throw new Error('Failed to send message');
+      }
+    } catch (error) {
+      console.error('Error sending message:', error);
+      toast({
+        title: "Error sending message",
+        description: "There was a problem sending your message. Please try again later.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
   
   return (
@@ -89,9 +114,8 @@ const Contact = () => {
                 
                 <div className="mt-8">
                   <a 
-                    href="/cv.pdf" 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
+                    href="#" 
+                    onClick={downloadCV}
                     className="btn-primary text-lg"
                   >
                     Download CV
