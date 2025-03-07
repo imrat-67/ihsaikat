@@ -35,7 +35,7 @@ const About = () => {
               <div className="aspect-square bg-portfolio-blue/20 backdrop-blur-sm rounded-lg flex items-center justify-center p-1">
                 <div className="w-full h-full overflow-hidden rounded-lg relative">
                   <img 
-                    src="/placeholder.svg" 
+                    src="/lovable-uploads/b2118097-59f0-449e-a3fa-63b0e4f6bc41.png" 
                     alt="Imtiaj Hossain Saikat" 
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />

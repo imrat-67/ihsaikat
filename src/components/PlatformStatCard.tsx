@@ -13,12 +13,13 @@ interface PlatformStatCardProps {
 
 const PlatformStatCard: React.FC<PlatformStatCardProps> = ({ platform, icon, url, username }) => {
   const { data, isLoading, isError } = useQuery({
-    queryKey: ['platform-stats', platform],
-    queryFn: () => fetchPlatformStats(platform, username),
+    queryKey: ['platform-stats', platform.toLowerCase()],
+    queryFn: () => fetchPlatformStats(platform.toLowerCase(), username),
+    staleTime: 1000 * 60 * 60, // Cache for 1 hour
   });
 
   return (
-    <div className="glass-card">
+    <div className="glass-card hover:shadow-lg hover:shadow-portfolio-blue/10 transition-all duration-300">
       <div className="flex justify-between items-center mb-4">
         <div className="flex items-center gap-3">
           <div className="text-portfolio-lightBlue text-2xl">{icon}</div>
@@ -29,6 +30,7 @@ const PlatformStatCard: React.FC<PlatformStatCardProps> = ({ platform, icon, url
           target="_blank"
           rel="noopener noreferrer"
           className="text-portfolio-red hover:text-portfolio-lightRed transition-colors"
+          aria-label={`Visit ${platform} profile`}
         >
           <ExternalLink size={18} />
         </a>

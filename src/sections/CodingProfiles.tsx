@@ -2,6 +2,8 @@
 import React from 'react';
 import SectionContainer from '@/components/SectionContainer';
 import PlatformStatCard from '@/components/PlatformStatCard';
+import { useQueries } from '@tanstack/react-query';
+import { fetchPlatformStats } from '@/lib/api';
 import { platformUrls } from '@/lib/utils';
 import { 
   Code2, 
@@ -15,7 +17,8 @@ import {
   Terminal, 
   Infinity, 
   CheckCircle, 
-  Database 
+  Database,
+  Award
 } from 'lucide-react';
 import { useInView } from 'react-intersection-observer';
 
@@ -39,6 +42,25 @@ const CodingProfiles = () => {
     { name: 'UVA', icon: <Sigma />, url: platformUrls['uva'] },
     { name: 'GeeksforGeeks', icon: <Database />, url: platformUrls['geeksforgeeks'] },
   ];
+
+  // Fetch stats for all platforms
+  const results = useQueries({
+    queries: platforms.map(platform => ({
+      queryKey: ['platform-stats', platform.name.toLowerCase()],
+      queryFn: () => fetchPlatformStats(platform.name.toLowerCase(), 'imrat_67'),
+      staleTime: 1000 * 60 * 60, // Cache for 1 hour
+    })),
+  });
+
+  // Calculate total solved problems
+  const totalSolved = results.reduce((total, result) => {
+    if (result.data && result.data.solvedCount) {
+      return total + result.data.solvedCount;
+    }
+    return total;
+  }, 0);
+
+  const isLoading = results.some(result => result.isLoading);
   
   return (
     <SectionContainer id="coding">
@@ -55,13 +77,31 @@ const CodingProfiles = () => {
             </p>
           </div>
         </div>
+
+        <div className={`mb-10 text-center transition-all duration-700 delay-400 ${inView ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
+          <div className="glass-card inline-block px-8 py-6">
+            <div className="flex items-center justify-center gap-4">
+              <Award size={28} className="text-portfolio-red" />
+              <div>
+                <h3 className="text-2xl font-bold text-portfolio-white">
+                  {isLoading ? (
+                    <span className="inline-block w-16 h-8 bg-portfolio-gray/20 animate-pulse rounded"></span>
+                  ) : (
+                    <span className="font-mono">{totalSolved.toLocaleString()}</span>
+                  )}
+                </h3>
+                <p className="text-portfolio-lightGray">Total Problems Solved</p>
+              </div>
+            </div>
+          </div>
+        </div>
         
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           {platforms.map((platform, index) => (
             <div 
               key={platform.name} 
               className={`transition-all duration-700 ${inView ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}
-              style={{ transitionDelay: `${300 + index * 100}ms` }}
+              style={{ transitionDelay: `${500 + index * 100}ms` }}
             >
               <PlatformStatCard
                 platform={platform.name}
