@@ -32,7 +32,7 @@ const Experience = () => {
             <TimelineItem 
               year="2022 - 2023"
               title="AI Coding Trainer and Reviewer"
-              subtitle="Remoteaks"
+              subtitle="Remotasks"
               description="Trained and reviewed AI models for code generation, debugging, and optimization across multiple programming languages."
             />
           </div>
