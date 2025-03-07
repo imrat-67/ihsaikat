@@ -2,7 +2,7 @@
 import React from 'react';
 import SectionContainer from '@/components/SectionContainer';
 import SocialIcon from '@/components/SocialIcon';
-import { Mail, Phone, Linkedin, GitHub } from 'lucide-react';
+import { Mail, Phone, Linkedin, Github } from 'lucide-react';
 import { useInView } from 'react-intersection-observer';
 
 const Contact = () => {
@@ -56,7 +56,7 @@ const Contact = () => {
               <div className={`transition-all duration-700 delay-800 ${inView ? 'translate-x-0 opacity-100' : 'translate-x-10 opacity-0'}`}>
                 <SocialIcon 
                   href="https://github.com/imrat_67" 
-                  icon={<GitHub size={20} />} 
+                  icon={<Github size={20} />} 
                   label="imrat_67"
                 />
               </div>
