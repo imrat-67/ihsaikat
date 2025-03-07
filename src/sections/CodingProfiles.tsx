@@ -16,7 +16,6 @@ import {
   CheckCircle, 
   GraduationCap,
   Award,
-  Github,
   Database
 } from 'lucide-react';
 import { useInView } from 'react-intersection-observer';
@@ -40,12 +39,11 @@ const CodingProfiles = () => {
     { name: 'HackerEarth', icon: <Database />, url: platformUrls['hackerearth'] },
     { name: 'UVA', icon: <Terminal />, url: platformUrls['uva'] },
     { name: 'GeeksforGeeks', icon: <Database />, url: platformUrls['geeksforgeeks'] },
-    { name: 'GitHub', icon: <Github />, url: 'https://github.com/imrat-67' },
   ];
 
   // Fetch stats for all platforms
   const results = useQueries({
-    queries: platforms.filter(platform => platform.name !== 'GitHub').map(platform => ({
+    queries: platforms.map(platform => ({
       queryKey: ['platform-stats', platform.name.toLowerCase()],
       queryFn: () => fetchPlatformStats(platform.name.toLowerCase(), 'imrat_67'),
       staleTime: 1000 * 60 * 60, // Cache for 1 hour
@@ -73,7 +71,7 @@ const CodingProfiles = () => {
         <div className="mb-8 text-center">
           <div className={`inline-block bg-portfolio-blue/20 backdrop-blur-sm px-6 py-3 rounded-full transition-all duration-700 delay-300 ${inView ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
             <p className="text-portfolio-lightGray">
-              Username: <span className="text-portfolio-red font-mono">imrat_67</span> (GitHub: <span className="text-portfolio-red font-mono">imrat-67</span>)
+              Username across all platforms: <span className="text-portfolio-red font-mono">imrat_67</span>
             </p>
           </div>
         </div>
@@ -107,7 +105,7 @@ const CodingProfiles = () => {
                 platform={platform.name}
                 icon={platform.icon}
                 url={platform.url}
-                username={platform.name === 'GitHub' ? 'imrat-67' : 'imrat_67'}
+                username="imrat_67"
               />
             </div>
           ))}
