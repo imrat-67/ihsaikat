@@ -4,15 +4,15 @@ import { useQuery } from '@tanstack/react-query';
 import { fetchPlatformStats } from '@/lib/api';
 import { ExternalLink } from 'lucide-react';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
-import { platformLogos } from '@/lib/utils';
 
 interface PlatformStatCardProps {
   platform: string;
+  icon: React.ReactNode;
   url: string;
   username: string;
 }
 
-const PlatformStatCard: React.FC<PlatformStatCardProps> = ({ platform, url, username }) => {
+const PlatformStatCard: React.FC<PlatformStatCardProps> = ({ platform, icon, url, username }) => {
   const { data, isLoading, isError } = useQuery({
     queryKey: ['platform-stats', platform.toLowerCase()],
     queryFn: () => fetchPlatformStats(platform.toLowerCase(), username),
@@ -23,21 +23,7 @@ const PlatformStatCard: React.FC<PlatformStatCardProps> = ({ platform, url, user
     <div className="glass-card hover:shadow-lg hover:shadow-portfolio-blue/10 transition-all duration-300">
       <div className="flex justify-between items-center mb-4">
         <div className="flex items-center gap-3">
-          <div className="text-portfolio-lightBlue w-6 h-6 flex items-center justify-center">
-            {platformLogos[platform.toLowerCase()] ? (
-              <img 
-                src={platformLogos[platform.toLowerCase()]} 
-                alt={`${platform} logo`} 
-                className="w-6 h-6 object-contain"
-                onError={(e) => {
-                  // Fallback if image fails to load
-                  e.currentTarget.style.display = 'none';
-                }} 
-              />
-            ) : (
-              <div className="w-6 h-6 bg-portfolio-blue/20 rounded-full"></div>
-            )}
-          </div>
+          <div className="text-portfolio-lightBlue text-2xl">{icon}</div>
           <h3 className="text-lg font-bold text-portfolio-white">{platform}</h3>
         </div>
         <Tooltip>

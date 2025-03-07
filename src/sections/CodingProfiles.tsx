@@ -5,7 +5,19 @@ import PlatformStatCard from '@/components/PlatformStatCard';
 import { useQueries } from '@tanstack/react-query';
 import { fetchPlatformStats } from '@/lib/api';
 import { platformUrls } from '@/lib/utils';
-import { Award } from 'lucide-react';
+import { 
+  FileCode,
+  Cpu, 
+  Lightbulb,
+  Code2,
+  Puzzle, 
+  Hash,
+  Terminal,
+  CheckCircle, 
+  GraduationCap,
+  Award,
+  Database
+} from 'lucide-react';
 import { useInView } from 'react-intersection-observer';
 
 const CodingProfiles = () => {
@@ -15,18 +27,18 @@ const CodingProfiles = () => {
   });
   
   const platforms = [
-    { name: 'Codeforces', url: platformUrls['codeforces'] },
-    { name: 'LeetCode', url: platformUrls['leetcode'] },
-    { name: 'AtCoder', url: platformUrls['atcoder'] },
-    { name: 'LightOJ', url: platformUrls['lightoj'] },
-    { name: 'CSES', url: platformUrls['cses'] },
-    { name: 'CodeChef', url: platformUrls['codechef'] },
-    { name: 'SPOJ', url: platformUrls['spoj'] },
-    { name: 'Timus', url: platformUrls['timus'] },
-    { name: 'HackerRank', url: platformUrls['hackerrank'] },
-    { name: 'HackerEarth', url: platformUrls['hackerearth'] },
-    { name: 'UVA', url: platformUrls['uva'] },
-    { name: 'GeeksforGeeks', url: platformUrls['geeksforgeeks'] },
+    { name: 'Codeforces', icon: <Hash />, url: platformUrls['codeforces'] },
+    { name: 'LeetCode', icon: <Code2 />, url: platformUrls['leetcode'] },
+    { name: 'AtCoder', icon: <Cpu />, url: platformUrls['atcoder'] },
+    { name: 'LightOJ', icon: <Lightbulb />, url: platformUrls['lightoj'] },
+    { name: 'CSES', icon: <Puzzle />, url: platformUrls['cses'] },
+    { name: 'CodeChef', icon: <FileCode />, url: platformUrls['codechef'] },
+    { name: 'SPOJ', icon: <Terminal />, url: platformUrls['spoj'] },
+    { name: 'Timus', icon: <GraduationCap />, url: platformUrls['timus'] },
+    { name: 'HackerRank', icon: <CheckCircle />, url: platformUrls['hackerrank'] },
+    { name: 'HackerEarth', icon: <Database />, url: platformUrls['hackerearth'] },
+    { name: 'UVA', icon: <Terminal />, url: platformUrls['uva'] },
+    { name: 'GeeksforGeeks', icon: <Database />, url: platformUrls['geeksforgeeks'] },
   ];
 
   // Fetch stats for all platforms
@@ -91,6 +103,7 @@ const CodingProfiles = () => {
             >
               <PlatformStatCard
                 platform={platform.name}
+                icon={platform.icon}
                 url={platform.url}
                 username="imrat_67"
               />

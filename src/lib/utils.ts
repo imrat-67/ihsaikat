@@ -1,3 +1,4 @@
+
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 
@@ -20,21 +21,6 @@ export const platformUrls: Record<string, string> = {
   'geeksforgeeks': 'https://auth.geeksforgeeks.org/user/imrat_67'
 };
 
-export const platformLogos: Record<string, string> = {
-  'codeforces': 'https://cdn.iconscout.com/icon/free/png-256/free-codeforces-3629285-3031869.png',
-  'leetcode': 'https://leetcode.com/static/images/LeetCode_logo_rvs.png',
-  'atcoder': 'https://img.atcoder.jp/assets/favicon.png',
-  'lightoj': 'https://lightoj.com/logo192.png',
-  'cses': 'https://cses.fi/logo.png?1',
-  'codechef': 'https://cdn.codechef.com/images/cc-logo.svg',
-  'spoj': 'https://stx1.spoj.com/gfx/2015e.png',
-  'timus': 'https://acm.timus.ru/images/logo.png',
-  'hackerrank': 'https://hrcdn.net/community-frontend/assets/favicon-ddc852f75a.png',
-  'hackerearth': 'https://static-fastly.hackerearth.com/static/hackerearth/images/logo/HE_identity.png',
-  'uva': 'https://onlinejudge.org/templates/hm_yaml_2_5/favicon.ico',
-  'geeksforgeeks': 'https://media.geeksforgeeks.org/gfg-gg-logo.svg'
-};
-
 export function numberWithCommas(x: number): string {
   return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
@@ -55,19 +41,4 @@ export function getVisibleSections(): string[] {
   });
 
   return visibleSections;
-}
-
-export function downloadCV(event: React.MouseEvent<HTMLAnchorElement>) {
-  event.preventDefault();
-  
-  const cvUrl = '/cv.pdf';
-  
-  const link = document.createElement('a');
-  link.href = cvUrl;
-  link.setAttribute('download', 'imtiaj_hossain_saikat_cv.pdf');
-  link.setAttribute('target', '_blank');
-  
-  document.body.appendChild(link);
-  link.click();
-  document.body.removeChild(link);
 }
