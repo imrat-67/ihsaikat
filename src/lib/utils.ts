@@ -18,7 +18,8 @@ export const platformUrls: Record<string, string> = {
   'hackerrank': 'https://www.hackerrank.com/imrat_67',
   'hackerearth': 'https://www.hackerearth.com/@imrat_67',
   'uva': 'https://onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&page=show_authorstats&userid=imrat_67',
-  'geeksforgeeks': 'https://auth.geeksforgeeks.org/user/imrat_67'
+  'geeksforgeeks': 'https://auth.geeksforgeeks.org/user/imrat_67',
+  'github': 'https://github.com/imrat-67'
 };
 
 export function numberWithCommas(x: number): string {

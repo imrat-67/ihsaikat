@@ -6,19 +6,18 @@ import { useQueries } from '@tanstack/react-query';
 import { fetchPlatformStats } from '@/lib/api';
 import { platformUrls } from '@/lib/utils';
 import { 
-  Code2, 
-  Hash, 
-  Lightbulb, 
+  FileCode,
   Cpu, 
+  Lightbulb,
+  Code2,
   Puzzle, 
-  Sigma, 
-  FileCode, 
-  Brackets, 
-  Terminal, 
-  Infinity, 
+  Hash,
+  Terminal,
   CheckCircle, 
-  Database,
-  Award
+  GraduationCap,
+  Award,
+  Github,
+  Database
 } from 'lucide-react';
 import { useInView } from 'react-intersection-observer';
 
@@ -30,22 +29,23 @@ const CodingProfiles = () => {
   
   const platforms = [
     { name: 'Codeforces', icon: <Hash />, url: platformUrls['codeforces'] },
+    { name: 'LeetCode', icon: <Code2 />, url: platformUrls['leetcode'] },
     { name: 'AtCoder', icon: <Cpu />, url: platformUrls['atcoder'] },
     { name: 'LightOJ', icon: <Lightbulb />, url: platformUrls['lightoj'] },
-    { name: 'LeetCode', icon: <Code2 />, url: platformUrls['leetcode'] },
     { name: 'CSES', icon: <Puzzle />, url: platformUrls['cses'] },
     { name: 'CodeChef', icon: <FileCode />, url: platformUrls['codechef'] },
-    { name: 'Timus', icon: <Brackets />, url: platformUrls['timus'] },
     { name: 'SPOJ', icon: <Terminal />, url: platformUrls['spoj'] },
+    { name: 'Timus', icon: <GraduationCap />, url: platformUrls['timus'] },
     { name: 'HackerRank', icon: <CheckCircle />, url: platformUrls['hackerrank'] },
-    { name: 'HackerEarth', icon: <Infinity />, url: platformUrls['hackerearth'] },
-    { name: 'UVA', icon: <Sigma />, url: platformUrls['uva'] },
+    { name: 'HackerEarth', icon: <Database />, url: platformUrls['hackerearth'] },
+    { name: 'UVA', icon: <Terminal />, url: platformUrls['uva'] },
     { name: 'GeeksforGeeks', icon: <Database />, url: platformUrls['geeksforgeeks'] },
+    { name: 'GitHub', icon: <Github />, url: 'https://github.com/imrat-67' },
   ];
 
   // Fetch stats for all platforms
   const results = useQueries({
-    queries: platforms.map(platform => ({
+    queries: platforms.filter(platform => platform.name !== 'GitHub').map(platform => ({
       queryKey: ['platform-stats', platform.name.toLowerCase()],
       queryFn: () => fetchPlatformStats(platform.name.toLowerCase(), 'imrat_67'),
       staleTime: 1000 * 60 * 60, // Cache for 1 hour
@@ -73,7 +73,7 @@ const CodingProfiles = () => {
         <div className="mb-8 text-center">
           <div className={`inline-block bg-portfolio-blue/20 backdrop-blur-sm px-6 py-3 rounded-full transition-all duration-700 delay-300 ${inView ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
             <p className="text-portfolio-lightGray">
-              Username across all platforms: <span className="text-portfolio-red font-mono">imrat_67</span>
+              Username: <span className="text-portfolio-red font-mono">imrat_67</span> (GitHub: <span className="text-portfolio-red font-mono">imrat-67</span>)
             </p>
           </div>
         </div>
@@ -107,7 +107,7 @@ const CodingProfiles = () => {
                 platform={platform.name}
                 icon={platform.icon}
                 url={platform.url}
-                username="imrat_67"
+                username={platform.name === 'GitHub' ? 'imrat-67' : 'imrat_67'}
               />
             </div>
           ))}

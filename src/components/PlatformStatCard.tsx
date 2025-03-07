@@ -3,6 +3,7 @@ import React from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { fetchPlatformStats } from '@/lib/api';
 import { ExternalLink } from 'lucide-react';
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 
 interface PlatformStatCardProps {
   platform: string;
@@ -25,19 +26,25 @@ const PlatformStatCard: React.FC<PlatformStatCardProps> = ({ platform, icon, url
           <div className="text-portfolio-lightBlue text-2xl">{icon}</div>
           <h3 className="text-lg font-bold text-portfolio-white">{platform}</h3>
         </div>
-        <a
-          href={url}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-portfolio-red hover:text-portfolio-lightRed transition-colors"
-          aria-label={`Visit ${platform} profile`}
-        >
-          <ExternalLink size={18} />
-        </a>
+        <Tooltip>
+          <TooltipTrigger asChild>
+            <a
+              href={url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-portfolio-red hover:text-portfolio-lightRed transition-colors"
+              aria-label={`Visit ${platform} profile`}
+            >
+              <ExternalLink size={18} />
+            </a>
+          </TooltipTrigger>
+          <TooltipContent>
+            <p>Visit profile</p>
+          </TooltipContent>
+        </Tooltip>
       </div>
 
       <div className="flex flex-col">
-        <div className="text-sm text-portfolio-lightGray mb-1">Username: {username}</div>
         {isLoading ? (
           <div className="flex justify-center items-center py-4">
             <div className="loader w-6 h-6 border-2"></div>
