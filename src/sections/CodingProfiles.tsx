@@ -45,7 +45,7 @@ const CodingProfiles = () => {
   const results = useQueries({
     queries: platforms.map(platform => ({
       queryKey: ['platform-stats', platform.name.toLowerCase()],
-      queryFn: () => fetchPlatformStats(platform.name.toLowerCase(), 'imrat_67'),
+      queryFn: () => fetchPlatformStats(platform.name.toLowerCase(), 'ihsaikat'),
       staleTime: 1000 * 60 * 60, // Cache for 1 hour
     })),
   });
