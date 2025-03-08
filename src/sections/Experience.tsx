@@ -22,7 +22,7 @@ const Experience = () => {
             <TimelineItem 
               year="2025 - Present"
               title="Industrial Trainee"
-              subtitle="Texlab IT"
+              subtitle="Texlab IT, Rajshahi"
               description="Currently undergoing industrial training at Texlab IT as part of my academic curriculum at RUET. Gaining hands-on experience in software development, IT solutions, and real-world project implementation."
             />
           </div>
