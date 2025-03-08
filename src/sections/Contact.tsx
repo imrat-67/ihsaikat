@@ -83,7 +83,7 @@ const Contact = () => {
                   <SocialIcon 
                     href="https://github.com/imrat-67" 
                     icon={<Github size={20} />} 
-                    label="imrat-67"
+                    label="ihsaikat"
                   />
                 </div>
                 
