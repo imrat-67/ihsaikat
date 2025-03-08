@@ -17,7 +17,7 @@ const Experience = () => {
           <h2 className="section-title inline-block ml-2">Experience</h2>
         </div>
 
-        <div className={`transition-all duration-700 delay-500 ${inView ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
+        <div className={`transition-all duration-700 delay-300 ${inView ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
             <TimelineItem
               year="2025 - Present"
               title="Industrial Trainee"
@@ -27,7 +27,7 @@ const Experience = () => {
           </div>
 
         <div className="max-w-3xl mx-auto">
-          <div className={`transition-all duration-700 delay-300 ${inView ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
+          <div className={`transition-all duration-700 delay-500 ${inView ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
             <TimelineItem
               year="2023 - 2024"
               title="AI Bangla Language Trainer and Reviewer"
