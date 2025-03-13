@@ -13,7 +13,7 @@ export const platformUrls: Record<string, string> = {
   'leetcode': 'https://leetcode.com/imrat_67/',
   'cses': 'https://cses.fi/user/imrat_67',
   'codechef': 'https://www.codechef.com/users/imrat_67',
-  'timus': 'https://acm.timus.ru/author.aspx?id=imrat_67',
+  'timus': 'https://acm.timus.ru/author.aspx?id=353785EE',
   'spoj': 'https://www.spoj.com/users/imrat_67/',
   'hackerrank': 'https://www.hackerrank.com/imrat_67',
   'hackerearth': 'https://www.hackerearth.com/@imrat_67',
