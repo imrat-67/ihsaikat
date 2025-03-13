@@ -45,7 +45,7 @@ const CodingProfiles = () => {
   const results = useQueries({
     queries: platforms.map(platform => ({
       queryKey: ['platform-stats', platform.name.toLowerCase()],
-      queryFn: () => fetchPlatformStats(platform.name.toLowerCase(), 'ihsaikat'),
+      queryFn: () => fetchPlatformStats(platform.name.toLowerCase(), 'imrat_67'),
       staleTime: 1000 * 60 * 60, // Cache for 1 hour
     })),
   });
@@ -71,7 +71,7 @@ const CodingProfiles = () => {
         <div className="mb-8 text-center">
           <div className={`inline-block bg-portfolio-blue/20 backdrop-blur-sm px-6 py-3 rounded-full transition-all duration-700 delay-300 ${inView ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
             <p className="text-portfolio-lightGray">
-              Username across all platforms: <span className="text-portfolio-red font-mono">ihsaikat</span>
+              Username across all platforms: <span className="text-portfolio-red font-mono">imrat_67</span>
             </p>
           </div>
         </div>
@@ -105,7 +105,7 @@ const CodingProfiles = () => {
                 platform={platform.name}
                 icon={platform.icon}
                 url={platform.url}
-                username="ihsaikat"
+                username="imrat_67"
               />
             </div>
           ))}
