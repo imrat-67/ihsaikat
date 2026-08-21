@@ -8,12 +8,6 @@ pipeline {
 
     stages {
 
-        stage('Checkout') {
-            steps {
-                git 'https://github.com/imrat-67/ihsaikat.git'
-            }
-        }
-
         stage('Build') {
             steps {
                 sh 'docker build -t ihsaikat-portfolio:build .'
