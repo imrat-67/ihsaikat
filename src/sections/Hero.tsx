@@ -44,7 +44,7 @@ const Hero = () => {
           Hi, my name is
         </p>
         <h1 className="text-5xl md:text-7xl font-bold text-portfolio-white mb-4 opacity-0 animate-fade-in" style={{ animationDelay: '600ms', animationFillMode: 'forwards' }}>
-          Imtiaj Hossain Saikat
+          Imrat Hossain Saikat
         </h1>
         <h2 className="text-3xl md:text-5xl font-bold text-portfolio-gray mb-6 opacity-0 animate-fade-in" style={{ animationDelay: '900ms', animationFillMode: 'forwards' }}>
           Computer Engineer & Competitive Programmer
